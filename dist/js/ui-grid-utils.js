@@ -3,7 +3,7 @@
  * https://github.com/CRCIT/ui-grid-utils
  * @license Apache-2.0
  * v0.1.0
- * 2016-10-17T13:01:02.612Z
+ * 2016-10-17T14:41:28.997Z
  */
 (function () {
   'use strict';
