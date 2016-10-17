@@ -1,0 +1,37 @@
+{
+  "name": "ui-grid-utils",
+  "version": "0.1.0",
+  "description": "Module with many useful ui-grid services",
+  "homepage": "https://github.com/CRCIT/ui-grid-utils",
+  "license": "Apache-2.0",
+  "authors": [
+    "Pablo Lopez <plopez@crcit.es>",
+    "Ruben Valero <rvalero@crcit.es>",
+    "Gabriel Jimenez <gjimenez@crcit.es>"
+  ],
+  "keywords": [
+    "ui-grid",
+    "plugin"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "config",
+    "docs",
+    "test",
+    "src",
+    "gulpfile.js",
+    "travis_build.sh"
+  ],
+  "main": "./dist/js/ui-grid-utils.js",
+  "dependencies": {
+    "angular-ui-grid": "~3.x"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.x"
+  },
+  "resolutions": {
+    "angular": "1.5.8"
+  }
+}
