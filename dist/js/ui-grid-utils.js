@@ -2,8 +2,8 @@
  * ui-grid-utils
  * https://github.com/CRCIT/ui-grid-utils
  * @license Apache-2.0
- * v0.1.0
- * 2016-10-17T14:41:28.997Z
+ * v0.1.1
+ * 2016-10-18T05:55:11.547Z
  */
 (function () {
   'use strict';
@@ -48,28 +48,32 @@
   'use strict';
 
   angular.module('ui.grid.utils')
-    .service('uiGridRenderService', ['uiGridCommonUtilsService', '$compile', '$rootScope', '$parse', '$interpolate',
-      function (uiGridCommonUtilsService, $compile, $scope, $parse, $interpolate) {
+    .service('uiGridRenderService', ['uiGridCommonUtilsService', '$compile', '$parse', '$interpolate',
+      function (uiGridCommonUtilsService, $compile, $parse, $interpolate) {
 
         function getRenderedCellValue(row, col) {
-          $scope.grid = row.grid;
-          $scope.row = row;
-          $scope.col = col;
+          var scope = _getScope(row,col);
 
           var html = uiGridCommonUtilsService.replaceFieldWithExpression(col, col.cellTemplate);
-          var cellTemplate = $compile(html)($scope);
-          var cellValue = $interpolate(cellTemplate.html())($scope);
+          var cellTemplate = $compile(html)(scope);
+          var cellValue = $interpolate(cellTemplate.html())(scope);
           return cellValue;
         }
 
         function getRenderStringValue(row, col, string) {
-          $scope.grid = row.grid;
-          $scope.row = row;
-          $scope.col = col;
+          var scope = _getScope(row,col);
 
           var expressionString = uiGridCommonUtilsService.replaceFieldWithExpression(col, string);
-          var renderedValue = $interpolate(expressionString)($scope);
+          var renderedValue = $interpolate(expressionString)(scope);
           return renderedValue;
+        }
+
+        function _getScope(row, col) {
+          var scope = row.grid.appScope;
+          scope.grid = row.grid;
+          scope.row = row;
+          scope.col = col;
+          return scope;
         }
 
         //service body
